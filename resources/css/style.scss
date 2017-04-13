@@ -1,0 +1,68 @@
+$matrix-length: 4;
+
+body {
+  font-family: 'Advent Pro';
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 20%;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 20%;
+  height: 90%;
+  border: solid 1px black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  cursor: default;
+  &:hover {
+    background-color: #ffeadf;
+  }
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1%;
+  width: 80%;
+  #discover-counter {
+    float: right;
+  }
+}
+
+
+#page-container {
+  display: flex;
+  justify-content: center;
+
+  hr {
+    border-style: inset;
+    border: inset #ffc0b4;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 3%;
+  }
+  #matrix-container {
+
+    #game-header {
+      font-size: 2em;
+      margin-bottom: 2%;
+      color: #ffc0b4;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 800px;
+  }
+}
