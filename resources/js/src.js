@@ -2,11 +2,11 @@
 (function($, window, document) {
 
     $(function() {
-
-        var arr = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+        var matrixSize = 4;
+        var arr = cardsGenerator(matrixSize);
         shuffle(arr);
-        initMatrix();
-        cardAssign(arr);
+        initMatrix(matrixSize);
+        cardAssign(arr, matrixSize);
 
         var clickCount = 0;
         var tryCount = 0;
@@ -20,7 +20,6 @@
                 clickCount++;
                 if (testEqualityFlag) {
                     if (firstCardTry[0].getAttribute('card') !== secondCardTry[0].getAttribute('card')) {
-                        console.log("aftermath");
                         firstCardTry.children(".back").hide();
                         secondCardTry.children(".back").hide();
                         firstCardTry.children(".front").show();
@@ -53,12 +52,12 @@
 
     });
 
-    function initMatrix() {
+    function initMatrix(size) {
         var e = document.getElementById("matrix-container");
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < size; i++){
             var row = document.createElement("div");
             row.className = "row";
-            for(var j = 0; j < 4; j++){
+            for(var j = 0; j < size; j++){
                 var cell = document.createElement("div");
                 cell.className = "square";
                 cell.id = i + ""+j;
@@ -95,9 +94,9 @@
         return array;
     }
 
-    function cardAssign(cardsArr) {
-        for(var i = 0; i < 4; i++) {
-            for (var j = 0; j < 4; j++) {
+    function cardAssign(cardsArr, matrixSize) {
+        for(var i = 0; i < matrixSize; i++) {
+            for (var j = 0; j < matrixSize; j++) {
                 var randCard = cardsArr.pop();
                 var currSelect = $("#" + i + "" + j);
                 currSelect.attr("card", randCard);
@@ -112,6 +111,16 @@
 
     function updateDisCount(discoverCount) {
         $("#discover-counter").html(discoverCount);
+    }
+
+    function cardsGenerator(size) {
+        var cardsArr = [];
+        for (var i=1; i <= size*2; i++) {
+            cardsArr.push(i);
+            cardsArr.push(i);
+        }
+        console.log(cardsArr);
+        return cardsArr;
     }
 
 }(window.jQuery, window, document));
