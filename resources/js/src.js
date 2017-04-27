@@ -2,11 +2,11 @@
 (function($, window, document) {
 
     $(function() {
-        var matrixSize = 4;
-        var arr = cardsGenerator(matrixSize);
+        var numOfCards = 20;
+        var arr = cardsGenerator(numOfCards);
         shuffle(arr);
-        initMatrix(matrixSize);
-        cardAssign(arr, matrixSize);
+        initMatrix(numOfCards);
+        cardAssign(arr, numOfCards);
 
         var clickCount = 0;
         var tryCount = 0;
@@ -54,10 +54,10 @@
 
     function initMatrix(size) {
         var e = document.getElementById("matrix-container");
-        for(var i = 0; i < size; i++){
+        for(var i = 0; i < size/4; i++){
             var row = document.createElement("div");
             row.className = "row";
-            for(var j = 0; j < size; j++){
+            for(var j = 0; j < 4; j++){
                 var cell = document.createElement("div");
                 cell.className = "square";
                 cell.id = i + ""+j;
@@ -94,9 +94,9 @@
         return array;
     }
 
-    function cardAssign(cardsArr, matrixSize) {
-        for(var i = 0; i < matrixSize; i++) {
-            for (var j = 0; j < matrixSize; j++) {
+    function cardAssign(cardsArr, numOfCards) {
+        for(var i = 0; i < numOfCards/4; i++) {
+            for (var j = 0; j < 4; j++) {
                 var randCard = cardsArr.pop();
                 var currSelect = $("#" + i + "" + j);
                 currSelect.attr("card", randCard);
@@ -115,7 +115,7 @@
 
     function cardsGenerator(size) {
         var cardsArr = [];
-        for (var i=1; i <= size*2; i++) {
+        for (var i=1; i <= size/2; i++) {
             cardsArr.push(i);
             cardsArr.push(i);
         }
